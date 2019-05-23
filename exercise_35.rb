@@ -20,18 +20,18 @@ end
 
 #Test 1
 pets = ["Dog", "Rabbit", "Cat", "Hamster"]
-new_pets = my_rotate!(pets, 2)
+new_pets = rotate_array!(pets, 2)
 p new_pets == ["Cat", "Hamster", "Dog", "Rabbit"] ? "Correct" : "Incorrect"
 p pets.object_id == new_pets.object_id ? "Correct" : "Incorrect"
 
 #Test 2
 cities = ["NEW YORK", "TOKYO", "LONDON"]
-new_cities = my_rotate!(cities, 7)
+new_cities = rotate_array!(cities, 7)
 p new_cities == ["TOKYO", "LONDON", "NEW YORK"] ? "Correct" : "Incorrect"
 p cities.object_id == new_cities.object_id ? "Correct" : "Incorrect"
 
 #Test 3
 fruits = ["grapes", "mango", "durian", "mangosteen"]
-new_fruits = my_rotate!(fruits, -3)
+new_fruits = rotate_array!(fruits, -3)
 p new_fruits == ["mango", "durian", "mangosteen", "grapes"] ? "Correct" : "Incorrect"
 p fruits.object_id == new_fruits.object_id ? "Correct" : "Incorrect"

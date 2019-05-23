@@ -11,5 +11,5 @@
 
 p sum_of_evens([25, 18, 3, 81, 5, 20, 12]) == 50 ? "Correct" : "Incorrect"
 p sum_of_evens([30, 4, 8, 11, 45, 76, 29]) ==  118 ? "Correct" : "Incorrect"
-p sum_of_evens([]) ==  ? "Correct" : "Incorrect"
-p sum_of_evens([]) ==  ? "Correct" : "Incorrect"
+p sum_of_evens([0, 1, 3, 5, 7, 9, 11, 13]) == 0 ? "Correct" : "Incorrect"
+p sum_of_evens([]) == 0 ? "Correct" : "Incorrect"
