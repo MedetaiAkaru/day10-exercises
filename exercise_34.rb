@@ -14,20 +14,29 @@ end
 
 # Driver Code: Do not edit under this line
 
-#Test 1
-array_1 = [7, 0, 4]
-result_1 = scalar_multiple!(array_1, 3)
-p result_1 == [21, 0, 12] ? "Correct" : "Incorrect"
-p array_1.object_id == result_1.object_id ? "Correct" : "Incorrect"
+# check_solution runs a single test case and prints whether it was
+# successful or not.
+def check_solution(test_number, array, multiplier, expected)
+    actual = scalar_multiple!(array, multiplier)
+    if actual != expected
+        puts "Test ##{test_number}: Incorrect value: got #{actual}, expected #{expected}"
+        return false
+    end
+    if array.object_id != actual.object_id
+        puts "Test ##{test_number}: Incorrect, must mutate original value"
+        return false
+     end
 
-#Test 2
-array_2 = [90, 30, 4, 12]
-result_2 = scalar_multiple!(array_2, 0.5)
-p result_2 == [45.0, 15.0, 2.0, 6.0] ? "Correct" : "Incorrect"
-p result_2.object_id == array_2.object_id ? "Correct" : "Incorrect"
+    puts "Test ##{test_number}: Correct"
+    return true
+end
 
-#Test 3
-array_3 = [4, 48, 39, 7.2, 62.5, 12.4]
-result_3 = scalar_multiple!(array_3, 6)
-p result_3 == [24, 288, 234, 43.2, 375.0, 74.4] ? "Correct" : "Incorrect"
-p result_3.object_id == array_3.object_id ? "Correct" : "Incorrect"
+# run_tests runs each of the test cases.
+def run_tests()
+    check_solution(1, [7, 0, 4], 3, [21, 0, 12])
+    check_solution(2, [90, 30, 4, 12], 0.5, [45.0, 15.0, 2.0, 6.0])
+    check_solution(3, [4, 48, 39, 7.2, 62.5, 12.4], 6, [24, 288, 234, 43.2, 375.0, 74.4])
+end
+
+# Execute the tests.
+run_tests()

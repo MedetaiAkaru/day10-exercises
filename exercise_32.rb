@@ -9,6 +9,25 @@
 
 # Driver Code: Do not edit under this line
 
-p max_inject(1, -4, 0, 7, 5) == 7 ? "Correct" : "Incorrect"
-p max_inject(30, 28, 18) == 30 ? "Correct" : "Incorrect"
-p max_inject(-30, 28, 18) == 28 ? "Correct" : "Incorrect"
+# check_solution runs a single test case and prints whether it was
+# successful or not.
+def check_solution(test_number, expected, *values)
+    actual = max_inject(*values)
+    if actual != expected
+        puts "Test ##{test_number}: Incorrect value: got #{actual}, expected #{expected}"
+        return false
+    end
+
+    puts "Test ##{test_number}: Correct"
+    return true
+end
+
+# run_tests runs each of the test cases.
+def run_tests()
+    check_solution(1, 7, 1, -4, 0, 7, 5)
+    check_solution(2, 30, 30, 28, 18)
+    check_solution(3, 28, -30, 28, 18)
+end
+
+# Execute the tests.
+run_tests()

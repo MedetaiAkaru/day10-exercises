@@ -13,14 +13,28 @@ end
 
 # Driver Code: Do not edit under this line
 
-#Test 1
-numbers = [4, 2, 0, 2]
-new_numbers = replace_elements!(numbers, {2=>"two", 0=>"zero", 5=>"five"})
-p new_numbers == [4, "two", "zero", "two"] ? "Correct" : "Incorrect"
-p numbers.object_id == new_numbers.object_id ? "Correct" : "Incorrect"
+# check_solution runs a single test case and prints whether it was
+# successful or not.
+def check_solution(test_number, array, hash, expected)
+    actual = replace_elements!(array, hash)
+    if actual != expected
+        puts "Test ##{test_number}: Incorrect value: got #{actual}, expected #{expected}"
+        return false
+    end
+    if array.object_id != actual.object_id
+        puts "Test ##{test_number}: Incorrect, must mutate original value"
+        return false
+     end
 
-#Test 2
-names = ["Matthias", "Simcha", "Mashu", "David"]
-new_names = replace_elements!(names, "Matthias"=>"J", "Mashu"=>"D")
-p new_names == ["J", "Simcha", "D", "David"] ? "Correct" : "Incorrect"
-p names.object_id == new_names.object_id ? "Correct" : "Incorrect"
+    puts "Test ##{test_number}: Correct"
+    return true
+end
+
+# run_tests runs each of the test cases.
+def run_tests()
+    check_solution(1, [4, 2, 0, 2], {2=>"two", 0=>"zero", 5=>"five"}, [4, "two", "zero", "two"])
+    check_solution(2, ["Matthias", "Simcha", "Mashu", "David"], {"Matthias"=>"J", "Mashu"=>"D"}, ["J", "Simcha", "D", "David"])
+end
+
+# Execute the tests.
+run_tests()

@@ -11,7 +11,26 @@
 
 # Driver Code: Do not edit under this line
 
-p is_coprime?(25, 12) == true ? "Correct" : "Incorrect"
-p is_coprime?(7, 11) == true ? "Correct" : "Incorrect"
-p is_coprime?(30, 9) == false ? "Correct" : "Incorrect"
-p is_coprime?(6, 24) == false ? "Correct" : "Incorrect"
+# check_solution runs a single test case and prints whether it was
+# successful or not.
+def check_solution(test_number, a, b, expected)
+    actual = is_coprime?(a, b)
+    if actual != expected
+        puts "Test ##{test_number}: Incorrect value: got #{actual}, expected #{expected}"
+        return false
+    end
+
+    puts "Test ##{test_number}: Correct"
+    return true
+end
+
+# run_tests runs each of the test cases.
+def run_tests()
+    check_solution(1, 25, 12, true)
+    check_solution(2, 7, 11, true)
+    check_solution(3, 30, 9, false)
+    check_solution(4, 6, 24, false)
+end
+
+# Execute the tests.
+run_tests()
