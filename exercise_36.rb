@@ -15,12 +15,12 @@ end
 
 #Test 1
 numbers = [4, 2, 0, 2]
-new_numbers = ele_replace!(numbers, {2=>"two", 0=>"zero", 5=>"five"})
+new_numbers = replace_elements!(numbers, {2=>"two", 0=>"zero", 5=>"five"})
 p new_numbers == [4, "two", "zero", "two"] ? "Correct" : "Incorrect"
 p numbers.object_id == new_numbers.object_id ? "Correct" : "Incorrect"
 
 #Test 2
 names = ["Matthias", "Simcha", "Mashu", "David"]
-new_names = ele_replace!(names, "Matthias"=>"J", "Mashu"=>"D")
+new_names = replace_elements!(names, "Matthias"=>"J", "Mashu"=>"D")
 p new_names == ["J", "Simcha", "D", "David"] ? "Correct" : "Incorrect"
 p names.object_id == new_names.object_id ? "Correct" : "Incorrect"
