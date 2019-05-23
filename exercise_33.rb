@@ -14,20 +14,29 @@ end
 
 # Driver Code: Do not edit under this line
 
-#Test 1
-first_string = "download"
-first_result = replace_char_at!(first_string, "z", 0)
-p first_result == "zownload" ? "Correct" : "Incorrect"
-first_result.object_id == first_string.object_id ? "Correct" : "Incorrect"
+# check_solution runs a single test case and prints whether it was
+# successful or not.
+def check_solution(test_number, string, char, index, expected)
+    actual = replace_char_at!(string, char, index)
+    if actual != expected
+        puts "Test ##{test_number}: Incorrect value: got #{actual}, expected #{expected}"
+        return false
+    end
+    if string.object_id != actual.object_id
+        puts "Test ##{test_number}: Incorrect, must mutate original value"
+        return false
+     end
 
-#Test 2
-second_string = "account"
-second_result = replace_char_at!(second_string, "0", 3)
-p second_result == "acc0unt" ? "Correct" : "Incorrect"
-second_result.object_id == second_string.object_id ? "Correct" : "Incorrect"
+    puts "Test ##{test_number}: Correct"
+    return true
+end
 
-#Test 3
-third_string = "greatest"
-third_result = replace_char_at!(third_string, "3", 2)
-p third_result == "gr3atest" ? "Correct" : "Incorrect"
-third_result.object_id == third_string.object_id ? "Correct" : "Incorrect"
+# run_tests runs each of the test cases.
+def run_tests()
+    check_solution(1, "download", "z", 0, "zownload")
+    check_solution(2, "account", "0", 3, "acc0unt")
+    check_solution(3, "greatest", "3", 2, "gr3atest")
+end
+
+# Execute the tests.
+run_tests()

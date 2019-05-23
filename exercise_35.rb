@@ -18,20 +18,30 @@ end
 
 # Driver Code: Do not edit under this line
 
-#Test 1
-pets = ["Dog", "Rabbit", "Cat", "Hamster"]
-new_pets = rotate_array!(pets, 2)
-p new_pets == ["Cat", "Hamster", "Dog", "Rabbit"] ? "Correct" : "Incorrect"
-p pets.object_id == new_pets.object_id ? "Correct" : "Incorrect"
+# check_solution runs a single test case and prints whether it was
+# successful or not.
+def check_solution(test_number, steps, array, expected)
+    actual = rotate_array!(array, steps)
+    if actual != expected
+        puts "Test ##{test_number}: Incorrect value: got #{actual}, expected #{expected}"
+        return false
+    end
+    if array.object_id != actual.object_id
+        puts "Test ##{test_number}: Incorrect, must mutate original value"
+        return false
+     end
 
-#Test 2
-cities = ["NEW YORK", "TOKYO", "LONDON"]
-new_cities = rotate_array!(cities, 7)
-p new_cities == ["TOKYO", "LONDON", "NEW YORK"] ? "Correct" : "Incorrect"
-p cities.object_id == new_cities.object_id ? "Correct" : "Incorrect"
+    puts "Test ##{test_number}: Correct"
+    return true
+end
 
-#Test 3
-fruits = ["grapes", "mango", "durian", "mangosteen"]
-new_fruits = rotate_array!(fruits, -3)
-p new_fruits == ["mango", "durian", "mangosteen", "grapes"] ? "Correct" : "Incorrect"
-p fruits.object_id == new_fruits.object_id ? "Correct" : "Incorrect"
+
+# run_tests runs each of the test cases.
+def run_tests()
+    check_solution(1, 2, ["Dog", "Rabbit", "Cat", "Hamster"], ["Cat", "Hamster", "Dog", "Rabbit"])
+    check_solution(2, 7, ["NEW YORK", "TOKYO", "LONDON"], ["TOKYO", "LONDON", "NEW YORK"])
+    check_solution(3, -3, ["grapes", "mango", "durian", "mangosteen"], ["mango", "durian", "mangosteen", "grapes"])
+end
+
+# Execute the tests.
+run_tests()
